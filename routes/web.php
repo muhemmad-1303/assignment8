@@ -1,6 +1,6 @@
 <?php
 
-
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\FruitController;
 use App\Http\Controllers\FruitFavorite;
 use App\Http\Controllers\LoginController;
@@ -25,7 +25,10 @@ Route::get('/login',[LoginController::class,'index'])->middleware('guest');
 Route::get('/login/create',[LoginController::class,'create'])->middleware('guest');
 Route::post('/userRegister',[LoginController::class,'createUserRequest'])->middleware('guest');
 Route::post('/login',[LoginController::class,'loginRequest'])->middleware('guest');
-Route::get('/userFruit',[FruitController::class,'index'])->middleware('auth')->name('userFruit');
-Route::post('/logout',[LoginController::class,'logoutRequest'])->middleware('auth');
-Route::post('/addToFavourites',[FruitFavorite::class,'addToFavourites'])->middleware('auth');
-Route::delete('/removeFromFavourites',[FruitFavorite::class,'removeFromFavourites'])->middleware('auth');
+Route::get('/userFruit',[FruitController::class,'index'])->middleware('auth')->middleware('user')->name('userFruit');
+Route::post('/logout',[LoginController::class,'logoutRequest'])->middleware('auth')->middleware('user');
+Route::post('/addToFavorites',[FruitFavorite::class,'addToFavourites'])->middleware('auth')->middleware('user');
+Route::get('/favoriteShow',[FruitFavorite::class,'index'])->middleware('auth')->middleware('user');
+Route::delete('/removeFromFavourites',[FruitFavorite::class,'removeFromFavourites'])->middleware('auth')->middleware('user');
+Route::get('/admin',[AdminController::class,'index'])->middleware('admin');
+Route::post('/Adminlogout',[LoginController::class,'logoutRequest'])->middleware('auth')->middleware('admin');

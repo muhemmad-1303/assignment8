@@ -1,12 +1,16 @@
-img{
+*{
+   margin: 0;
+}
+
+img {
     width: 150px;
     height: 150px;
 }
-.main{
+.main {
     padding: 40px;
-    background-color: #D0E7D2;
+    background-color: #d0e7d2;
 }
-.fruitCardBody{
+.fruitCardBody {
     max-width: 1000px;
     margin: 0 auto;
     display: flex;
@@ -14,11 +18,9 @@ img{
     padding: 20px;
     flex-wrap: wrap;
     justify-content: space-around;
-    
-
 }
 
-.alertSession{
+.alertSession {
     position: absolute;
     background-color: rgb(215, 173, 173);
     top: 100px;
@@ -28,14 +30,14 @@ img{
     font-size: small;
 }
 
-.fruitCard{
-   width: 300px;
-   background-color:#79AC78;
-   box-shadow: 2px 2px 2px 2px #D0E7D2;
-   border-radius: 10px;
-   margin: 10px;
+.fruitCard {
+    width: 300px;
+    background-color: #79ac78;
+    box-shadow: 2px 2px 2px 2px #d0e7d2;
+    border-radius: 10px;
+    margin: 10px;
 }
-.fruitCardContent{
+.fruitCardContent {
     width: 100%;
     margin: 0 auto;
     display: flex;
@@ -45,47 +47,44 @@ img{
     padding-bottom: 20px;
 }
 
-.nav{
+.nav {
     width: 100%;
     background-color: #171d16;
-    position:absolute;
+    position: absolute;
     top: 0;
     right: 0;
     left: 0;
     padding: 20px;
     display: flex;
 }
-.nav form{
+.nav form {
     margin: 0 auto;
 }
-input[type='text']{
+input[type="text"] {
     border: none;
     outline: none;
     width: 500px;
     padding: 20px;
     border-radius: 10px;
-    
 }
-input[type='submit']{
+input[type="submit"] {
     border: none;
     outline: none;
     width: 60px;
     height: 60px;
     border-radius: 10px;
     background-color: white;
-    
 }
-.fruits{
+.fruits {
     margin-top: 100px;
 }
 
-.filterHidden{
+.filterHidden {
     display: none;
 }
 
-
-.filterOption{
-    color:white;
+.filterOption {
+    color: white;
     background-color: rgb(45, 39, 39);
     padding: 20px;
     border-radius: 10px;
@@ -93,58 +92,66 @@ input[type='submit']{
     right: 50px;
 }
 
-.filter{
+.filter {
     position: absolute;
     width: 350px;
     height: 300px;
     top: 0px;
     right: 0px;
-    background-color: rgba(0,0,0,1);
+    background-color: rgba(0, 0, 0, 1);
     padding: 20px;
     color: white;
     overflow: scroll;
 }
-.filter form{
+.filter form {
     display: flex;
-    flex-direction:row;
-    justify-content:space-between;
+    flex-direction: row;
+    justify-content: space-between;
     gap: 5px;
     flex-wrap: wrap;
     position: relative;
     padding: 20px;
-
 }
 
-.filter form label{
+.filter form label {
     width: 130px;
 }
 
-.filterSubmit{
+.filterSubmit {
     color: #171d16;
     position: absolute;
     bottom: 0px;
     right: 100px;
-    
 }
-.navFilter{
+.navFilter {
     display: flex;
     justify-content: space-between;
 }
 
-.closeFilter{
+.closeFilter {
     width: 50px;
     height: 50px;
 }
 
-
-.loginButton button{
-        border: none;
-        outline: none;
-        width: 100px;
-        height: 60px;
-        border-radius: 10px;
-        color:white;
-        background-color: rgb(45, 39, 39);
-        margin-left: 10px;
-        text-align: center;
+.loginButton button {
+    border: none;
+    outline: none;
+    width: 100px;
+    height: 60px;
+    border-radius: 10px;
+    color: white;
+    background-color: rgb(45, 39, 39);
+    margin-left: 10px;
+    text-align: center;
+}
+.favoriteButton form button {
+    border: none;
+    outline: none;
+    width: 100px;
+    height: 60px;
+    border-radius: 10px;
+    color: white;
+    background-color: rgb(45, 39, 39);
+    margin-left: 20px;
+    text-align: center;
 }

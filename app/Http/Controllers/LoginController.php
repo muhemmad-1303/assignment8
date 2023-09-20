@@ -42,6 +42,9 @@ class LoginController extends Controller
             ]
         );
         if (auth()->attempt($data)) {
+            if(auth()?->user()?->role==='admin'){
+                return redirect('/admin');
+            }
             return redirect('/userFruit');
         }
         throw ValidationException::withMessages([

@@ -16,6 +16,11 @@
                 <button type="submit">LogOut</button>
             </form>
         </div>
+        <div class="favoriteButton">
+            <form action="/favoriteShow" method="get">
+                <button type="submit">Favorite</button>
+            </form>
+        </div>
         <form action="/userFruit" method='get'>
             @csrf
             <input type="text" name="search" value="{{$search}}" placeholder="Search For The Fruit">
@@ -38,9 +43,9 @@
             <div class="fruitCard">
                 <div class="fruitCardContent">
                     <img src="{{ asset('fruit.png') }}" alt="Example Image">
-                    <h4>Name:{{$fruit->name}}</h2>
-                        <h4>Family:{{$fruit->family}}</h2>
-                            <h4>Genus:{{$fruit->genus}}</h2>
+                    <h4>Name:{{$fruit->name}}</h4>
+                        <h4>Family:{{$fruit->family}}</h4>
+                            <h4>Genus:{{$fruit->genus}}</h4>
                                 @if(auth()->user()->hasFavorited($fruit->id))
                                 <form method="post" action="/removeFromFavourites">
                                     @csrf
@@ -49,7 +54,7 @@
                                     <button type="submit" class="btn">Remove from Favorites</button>
                                 </form>
                                 @else
-                                <form method="post" action="/addToFavourites">
+                                <form method="post" action="/addToFavorites">
                                     @csrf
                                     <input type="hidden" name="fruitId" value="{{ $fruit->id }}">
                                     <button type="submit" class="btn">Add to Favorites</button>

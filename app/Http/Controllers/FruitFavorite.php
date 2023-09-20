@@ -9,6 +9,14 @@ use Illuminate\Http\Request;
 class FruitFavorite extends Controller
 {
     //
+    public function index(){
+        $user=auth()->user();
+        $fruits = FavouriteFruit::join('fruits', 'favourite_fruits.fruit_id', '=', 'fruits.id')
+        ->where('favourite_fruits.user_id', $user->id)
+        ->select('fruits.name','fruits.calories','fruits.fat','fruits.sugar','fruits.carbohydrates','fruits.protein','fruits.id')
+        ->get();
+        return view('favoriteShow',compact('fruits'));
+    }
     public function checkGuest(){
         if(!auth()->user()){
             return back()->with('error', 'Please log in to add to favorites.');
