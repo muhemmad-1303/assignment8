@@ -1,5 +1,8 @@
 @extends('layouts.app')
 @section('head')
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="{{asset('style.css')}}">
 <script src="{{asset('flashMessage.js')}}"></script>
 <script src="{{asset('filterBox.js')}}"></script>
@@ -10,20 +13,25 @@
 @section('content')
 <div class="main">
     <div class="nav">
-       <form action="/" method='get'>
-        @csrf
-           <input type="text" name="search" value="{{$search}}" placeholder="Search For The Fruit">
-           <input type="submit" value="&#128269;">
-       </form>
-       <div class="filterOption">Filter</div>
+        <div class="loginButton">
+            <form action="/login" method="get">
+                <button type="submit">LogIn</button>
+            </form>
+        </div>
+        <form action="/" method='post'>
+            @csrf
+            <input type="text" name="search" value="{{$search}}" placeholder="Search For The Fruit">
+            <input type="submit" value="&#128269;">
+        </form>
+        <div class="filterOption">Filter</div>
     </div>
     <div class="fruits">
         <h1>Fruits.....</h1>
         @if(session('error'))
-            <div class="alertSession">
-                {{ session('error') }}
-            </div>
-            @endif
+        <div class="alertSession">
+            {{ session('error') }}
+        </div>
+        @endif
         <div class="fruitCardBody">
             @if ($fruits->isEmpty())
             <h1>No fruits found</h1>
@@ -52,13 +60,13 @@
         <h3>Family</h3>
         <span class="closeFilter">X</span>
     </div>
-    <form action="/" method="GET">
+    <form action="/" method="post">
         @csrf
         @foreach($distinctFamilyNames as $familyName)
-            <label>
-                <input type="checkbox" name="family_names[]" value="{{ $familyName }}" {{ in_array($familyName, $selectedFamilyNames) ? 'checked' : '' }}>
-                {{ $familyName }}
-            </label>
+        <label>
+            <input type="checkbox" name="family_names[]" value="{{ $familyName }}" {{ in_array($familyName, $selectedFamilyNames) ? 'checked' : '' }}>
+            {{ $familyName }}
+        </label>
         @endforeach
         <button type="submit" class='filterSubmit'>Apply Filter</button>
     </form>

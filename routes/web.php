@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\FavouriteFruit;
 use App\Http\Controllers\FruitController;
+use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,5 +16,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/',[FruitController::class,'index'])->middleware('guest');
-Route::post('/addToFavourites',[FavouriteFruit::class,'checkGuest']);
+Route::match(['get', 'post'],'/',[FruitController::class,'index'])->middleware('guest');
+Route::post('/addToFavourites',[FavouriteFruit::class,'checkGuest'])->middleware('guest');
+Route::get('/login',[LoginController::class,'index'])->middleware('guest');
+Route::get('/login/create',[LoginController::class,'create'])->middleware('guest');
+Route::post('/userRegister',[LoginController::class,'createUserRequest'])->middleware('guest');
