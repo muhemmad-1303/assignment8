@@ -25,9 +25,9 @@
     </div>
     <div class="fruits">
         <h1>Fruits.....</h1>
-        @if(session('success'))
+        @if(session('error'))
         <div class="alertSession">
-            {{ session('success') }}
+            {{ session('error') }}
         </div>
         @endif
         <div class="fruitCardBody">

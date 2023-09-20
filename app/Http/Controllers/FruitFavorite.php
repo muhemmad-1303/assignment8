@@ -15,8 +15,12 @@ class FruitFavorite extends Controller
         }
     }
     public function addToFavourites(Request $request){
-          $fruitId=$request->input('fruitId');
           $user=auth()->user();
+          $favoriteCount=FavouriteFruit::where('user_id',$user->id)->count();
+          if($favoriteCount>=10){
+            return back()->with('error', 'You have reached the maximum limit of favorites 10');
+          }
+          $fruitId=$request->input('fruitId');
           $existFavorite=FavouriteFruit::where('user_id',$user->id)
           ->where('fruit_id',$fruitId)
           ->first();
@@ -26,6 +30,9 @@ class FruitFavorite extends Controller
                 'fruit_id' => $fruitId,
             ]);
             return back();
+          }
+          else{
+
           }
           
     }
