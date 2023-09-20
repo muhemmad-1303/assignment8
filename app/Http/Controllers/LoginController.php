@@ -42,11 +42,16 @@ class LoginController extends Controller
             ]
         );
         if (auth()->attempt($data)) {
-            return redirect('/todo')->with('success', 'welcome');
+            return redirect('/userFruit');
         }
         throw ValidationException::withMessages([
             'username' => 'user name dosent exist',
         ]);
+    }
+    public function logoutRequest()
+    {
+        auth()->logout();
+        return redirect('/');
     }
 
 }

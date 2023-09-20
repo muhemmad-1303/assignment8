@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Fruit;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
+
 
 class FruitController extends Controller
 {
@@ -20,6 +22,11 @@ class FruitController extends Controller
             $query->whereIn('family', $selectedFamilyNames);
         }
         $fruits=$query->paginate(10);
+        $currentRoute = Route::current()->getName();
+        if($currentRoute==='userFruit'){
+            return view('userFruit',compact('fruits','search','distinctFamilyNames','selectedFamilyNames'));
+        }
         return view('fruit',compact('fruits','search','distinctFamilyNames','selectedFamilyNames'));
+       
     }
 }

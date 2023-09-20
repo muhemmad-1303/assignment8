@@ -38,4 +38,13 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function hasFavorited($fruitId)
+    {
+        return FavouriteFruit::where('user_id', $this->id)
+            ->where('fruit_id', $fruitId)
+            ->exists();
+    }
+   
+   
 }
