@@ -44,7 +44,7 @@
 
         </div>
     </div>
-</div>
+
 <div class="filter filterHidden">
     <div class="navFilter">
         <h3>Family</h3>
@@ -63,5 +63,8 @@
 </div>
 
 
+<div class="paginator">
 {{ $fruits->appends(request()->input())->links() }}
+</div>
+</div>
 @endsection

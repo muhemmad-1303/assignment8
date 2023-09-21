@@ -6,6 +6,9 @@
 @section('content')
 <div class="main mainFav">
     <div class="nav">
+        <div class="home">
+            <a href="/userFruit">🍉</a>
+        </div>
     </div>
     <div class="fruits">
         <h1>Favourite Fruits.....</h1>

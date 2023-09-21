@@ -30,5 +30,6 @@ Route::post('/logout',[LoginController::class,'logoutRequest'])->middleware('aut
 Route::post('/addToFavorites',[FruitFavorite::class,'addToFavourites'])->middleware('auth')->middleware('user');
 Route::get('/favoriteShow',[FruitFavorite::class,'index'])->middleware('auth')->middleware('user');
 Route::delete('/removeFromFavourites',[FruitFavorite::class,'removeFromFavourites'])->middleware('auth')->middleware('user');
-Route::get('/admin',[AdminController::class,'index'])->middleware('admin');
+Route::get('/admin',[FruitController::class,'index'])->middleware('admin')->name('admin');
 Route::post('/Adminlogout',[LoginController::class,'logoutRequest'])->middleware('auth')->middleware('admin');
+Route::get('/{any}', function(){ abort(404);})->where('any', '.*');
